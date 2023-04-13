@@ -1,18 +1,16 @@
 from typing import Union
 from fastapi import FastAPI
-from sqlmodel import create_engine
-import yaml
+from sqlmodel import Session
+
+from api.models.WorkoutModel import WorkoutModel
+from api.repositories.database import create_db_and_tables, engine
+import uuid
 
 
 import uvicorn
 
-config = yaml.safe_load(open("./src/config/config.yaml"))
-conn_str = config["database"]["conn_str"]
-
-# from api.models.Workout import Workout
 
 app = FastAPI()
-engine = create_engine(conn_str)
 
 @app.get('/')
 def read_root():
@@ -28,6 +26,13 @@ def read_item(item_id: int, q: Union[str, None  ] = None):
 #     # return {"status": 200}
 #     return workout
 
+def test_add():
+    workout_1 = WorkoutModel(guid=str(uuid.uuid4()), total_distance=3.14, average_heart_rate=152)
+    with Session(engine) as session:
+        session.add(workout_1)
+        session.commit()
 
 if __name__ == "__main__":
+    create_db_and_tables()
+    # test_add()
     uvicorn.run("main:app", host="127.0.0.1", port=5000, log_level="info", reload="true")

@@ -1,1 +1,1 @@
-__all__ = ["Location", "QuantitySample", "Workout"]
+__all__ = ["LocationModel", "QuantitySampleModel", "WorkoutModel"]
