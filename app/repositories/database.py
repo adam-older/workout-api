@@ -1,4 +1,4 @@
-from sqlmodel import create_engine, SQLModel
+from sqlmodel import create_engine, SQLModel, Session
 from helpers.config_helper import get_config
 import yaml
 
@@ -14,3 +14,7 @@ engine = create_engine(f"mysql+pymysql://{_user}:{_pass}@localhost:3306/workoutD
 
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
+
+def get_sqlmodel_session():
+    with Session(engine) as db:
+        yield db
