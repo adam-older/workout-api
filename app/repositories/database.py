@@ -1,6 +1,6 @@
 from sqlmodel import create_engine, SQLModel, Session
-from helpers.config_helper import get_config
-import yaml
+
+from app.helpers.config_helper import get_config
 
 # config = yaml.safe_load(open("./src/config/config.yaml"))
 config = get_config()

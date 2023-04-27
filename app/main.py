@@ -2,10 +2,10 @@ from typing import Annotated, Union
 from fastapi import FastAPI, Depends
 from sqlmodel import Session
 
-from models.WorkoutModel import WorkoutModel
-from routers import users, workouts
-from routers.users import oauth2_scheme
-from repositories.database import create_db_and_tables, engine
+from app.models.WorkoutModel import WorkoutModel
+from app.routers import users, workouts
+from app.routers.users import oauth2_scheme
+from app.repositories.database import create_db_and_tables, engine
 import uuid
 
 import uvicorn

@@ -4,8 +4,8 @@ from typing import List
 
 from sqlmodel import Session, select, insert
 
-from repositories.database import get_sqlmodel_session
-from models.WorkoutModel import WorkoutModel
+from app.repositories.database import get_sqlmodel_session
+from app.models.WorkoutModel import WorkoutModel
 
 router = APIRouter(
     prefix="/workout",

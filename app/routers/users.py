@@ -6,7 +6,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 
 
-from helpers.config_helper import get_config
+from app.helpers.config_helper import get_config
 
 router = APIRouter(
     prefix="/user",
